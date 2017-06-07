@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Todo List</title>
+</head>
+
+<style type="text/css" >
+body {
+  background: #FFF;
+  color: #333;
+  font-family: Lato, sans-serif;
+}
+ol {
+  margin: 10;
+}
+ol li {
+  cursor: pointer;
+  position: relative;
+  padding: 12px 8px 12px 40px;
+  background: #59d4d9;
+  font-size: 18px;
+  transition: 0.2s;
+}
+/* Add button */
+#buttonID {
+  text-align: center;  
+
+  background: none;
+  border: 10px;
+  color: #555;
+  font-size: 18px;
+  width: 60px;
+  margin: 10px 0 0;
+  font-family: Lato, sans-serif;
+  cursor: pointer;
+  transition: 0.3s;
+  height: 35px;
+}
+#buttonID:hover {
+  background-color: #8378f4;
+  color: #fff;
+  width: 60px;
+  
+}
+button {
+  background: none;
+  border: 10px;
+  color: #88888;
+  font-size: 18px;
+  width: 60px;
+  margin: 10px 0 0;
+  font-family: Lato, sans-serif;
+  cursor: pointer;
+}
+button:hover {
+  color: #333;
+}
+
+/* Style the close button */
+.close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  
+}
+/* Heading */
+h3,
+label[for='new-task'] {
+  color: #333;
+  font-weight: 700;
+  font-size: 15px;
+  border-bottom: 2px solid #333;
+  padding: 30px 0 10px;
+  margin: 0;
+  text-transform: uppercase;
+}
+input[type="text"] {
+  margin: 0;
+  font-size: 18px;
+  line-height: 18px;
+  height: 18px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  background: #fff;
+  border-radius: 6px;
+  font-family: Lato, sans-serif;
+  color: #888;
+}
+input[type="text"]:focus {
+  color: #333;
+}
+p > button:hover {
+  color: #0FC57C;
+}
+
+</style>
+
+	
+<body>
+
+		<h2 align="center"> <u><i> My Todo List </i></u></h2>
+
+		<div align="center" id="divID">
+		<p>
+			<label for="myInput"></label>
+			<input type="text" id="myInput" placeholder="Add Todo">
+			<button id="buttonID">Add</button>
+
+		</p>
+		</div>
+		<h3 align="center"> Todo </h3>
+		<ol id = "list"> </ol>
+	
+
+	<script type="text/javascript">
+
+		var addBttn = document.getElementById("buttonID");
+		addBttn.onclick = function() {
+			// body...
+
+			var text = document.createElement("LI");
+			var inputText = document.getElementById("myInput").value.trim();
+			var content = document.createTextNode(inputText);
+			text.appendChild(content);
+			if (inputText === '') {
+    			alert("You must write something!");
+  			} else {
+  				var todoList = document.getElementById("list");
+				todoList.insertBefore(text, todoList.childNodes[0]);
+    			// document.getElementById("list").appendChild(text);
+  			}	
+
+			document.getElementById("myInput").value = "";
+
+			var button = document.createElement("button");
+	  		var txt = document.createTextNode("\u00D7");
+	  		button.className = "close";
+	  		text.appendChild(button);
+			button.appendChild(txt);
+	  		
+	  		for (i = 0; i < close.length; i++) {
+	    		close[i].onclick = function() {
+	      			var div = this.parentElement;
+	      			div.style.display = "none";
+	    		}
+	  		}			
+		}	
+
+		//close button to each item
+		var myNodelist = document.getElementsByTagName("LI");
+		var i;
+		for (i = 0; i < myNodelist.length; i++) {
+		  var button = document.createElement("button");
+		  var txt = document.createTextNode("\u00D7");
+		  button.className = "close";
+		  button.appendChild(txt);
+		  myNodelist[i].appendChild(button);
+		}
+
+		//to hide item
+		var close = document.getElementsByClassName("close");
+		var i;
+		for (i = 0; i < close.length; i++) {
+		  close[i].onclick = function() {
+		    var div = this.parentElement;
+		    div.style.display = "none";
+		  }
+		}
+
+	</script>
+
+
+</body>
+
+</html>
